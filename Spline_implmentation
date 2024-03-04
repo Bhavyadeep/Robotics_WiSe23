@@ -1,0 +1,28 @@
+# import first from : 
+# pip install numpy scipy matplotlib
+
+import numpy as np
+from scipy.interpolate import CubicSpline
+import matplotlib.pyplot as plt
+
+# Define the data points
+x = np.array([1, 2, 2.5, 4])
+y = np.array([45, 90, -45, 45])
+
+# Create a cubic spline interpolation
+cs = CubicSpline(x, y)
+
+# Generate values for the spline
+x_new = np.linspace(1, 4, 100)
+y_new = cs(x_new)
+
+# Plot the original data and the cubic spline
+plt.figure(figsize=(8, 6))
+plt.plot(x, y, 'o', label='Original data')
+plt.plot(x_new, y_new, '-', label='Cubic spline')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Cubic Spline Interpolation')
+plt.legend()
+plt.grid(True)
+plt.show()
